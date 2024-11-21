@@ -39,11 +39,9 @@ export default function Footer() {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'space-between',
-            pt: { xs: 4, sm: 8 },
+            flexDirection: { xs: 'column', sm: 'row' },
             width: '100%',
-            borderTop: '1px solid',
-            borderColor: 'divider',
+            justifyContent: 'space-between',
           }}
         >
           <div>
@@ -67,7 +65,7 @@ export default function Footer() {
             <IconButton
               color="inherit"
               size="small"
-              href="https://github.com/mui"
+              href="https://github.com/jitishp04" target="_blank" rel="noopener noreferrer"
               aria-label="GitHub"
               sx={{ alignSelf: 'center' }}
             >
@@ -76,7 +74,7 @@ export default function Footer() {
             <IconButton
               color="inherit"
               size="small"
-              href="https://www.linkedin.com/company/mui/"
+              href="https://www.linkedin.com/in/jitish-rajankumar-padhya/" target="_blank" rel="noopener noreferrer"
               aria-label="LinkedIn"
               sx={{ alignSelf: 'center' }}
             >
