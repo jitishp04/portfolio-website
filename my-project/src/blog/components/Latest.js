@@ -12,7 +12,7 @@ const articleInfo = [
     tag: 'Web-development',
     title: 'Travel Buddy',
     description:
-      'A full-stack travel web-app, which allows you to search places to visit in the area, create journals, and checklists.',
+      'A full-stack travel web-app, which allows you to search places to visit in the area using Google Maps API, create journals, and checklists.',
     image: '/travel-buddy.png',
     tech: ['ExpressJS', 'Node.js', 'MongoDB', 'Postman', 'Vue.js'],
     languages: ['JavaScript', 'HTML', 'CSS'],
@@ -37,6 +37,48 @@ const articleInfo = [
     tech: ['CMake', 'Docker', 'OpenDLV'],
     languages: ['C++'],
     link: 'https://github.com/jitishp04/steering-wheel-algorithm',
+  },
+  {
+    tag: 'Java and JavaFx project',
+    title: 'Snake Game',
+    description:
+      'Snake game with a GUI, music, leaderboard features, made for proffesionals to beginners to be able to toggle speed of the snake. ',
+    image: '/snake1.png',
+    tech: ['JavaFx', 'Maven'],
+    languages: ['Java', 'CSS'],
+    link: 'https://github.com/jitishp04/SnakeGame',
+  },
+  {
+    tag: 'Other Coding Works',
+    image: '/random.png',
+    items: [
+      {
+        title: 'Portfolio Website',
+        link: 'https://github.com/jitishp04/portfolio-website',
+      },
+      {
+        title: 'AI-systems Labs',
+        link: 'https://github.com/jitishp04/Software-Engineering-for-AI-Systems',
+      },
+      {
+        title: 'Arduino and C labs/ mini-projects',
+        link: 'https://github.com/jitishp04/Embedded-Systems-Arduino-C-',
+      },
+   ],
+  },
+  {
+    tag: 'Research Papers',
+    image: '/reports.png',
+    items: [
+      {
+        title: 'Change Management',
+        link: 'https://github.com/jitishp04/Research-Papers/blob/main/ChangeManagement.pdf',
+      },
+      {
+        title: 'Software Development Methodologies',
+        link: 'https://github.com/jitishp04/Research-Papers/blob/main/SoftwareDevelopmentMethodologies.pdf',
+      }
+   ],
   },
 ];
 
@@ -151,60 +193,129 @@ export default function Latest() {
       >
         {articleInfo.map((article, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: 1,
-                height: '100%',
-                padding: 0,
-                borderRadius: '8px',
-                overflow: 'hidden',
-              }}
-            >
+            {article.items ? (
+              // Render multiple titles with links
               <Box
-                component="img"
-                src={article.image}
-                alt={article.title}
                 sx={{
-                  width: '100%',
-                  height: '150px',
-                  objectFit: 'cover',
-                  borderRadius: '8px 8px 0 0',
-                  marginBottom: '8px',
-                }}
-              />
-              <Typography gutterBottom variant="caption" component="div">
-                {article.tag}
-              </Typography>
-              <TitleTypography
-                gutterBottom
-                variant="h6"
-                component="a"
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  '&:hover': {
-                    color: (theme) => theme.palette.primary.main,
-                  },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: 1,
+                  height: '100%',
+                  padding: 0,
+                  borderRadius: '8px',
+                  overflow: 'hidden',
                 }}
               >
-                {article.title}
-                <NavigateNextRoundedIcon
-                  className="arrow"
-                  sx={{ fontSize: '1rem' }}
+                {article.image ? (
+                  <Box
+                    component="img"
+                    src={article.image}
+                    alt={article.tag}
+                    sx={{
+                      width: '100%',
+                      height: '150px',
+                      objectFit: 'cover',
+                      borderRadius: '8px 8px 0 0',
+                      marginBottom: '8px',
+                    }}
+                  />
+                ) : (
+                  // Optional placeholder
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: '150px',
+                      backgroundColor: '#f0f0f0',
+                      borderRadius: '8px 8px 0 0',
+                      marginBottom: '8px',
+                    }}
+                  />
+                )}
+                <Typography gutterBottom variant="caption" component="div">
+                  {article.tag}
+                </Typography>
+                {article.items.map((item, idx) => (
+                  <TitleTypography
+                    key={idx}
+                    variant="h6"
+                    component="a"
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                      '&:hover': {
+                        color: (theme) => theme.palette.primary.main,
+                      },
+                    }}
+                  >
+                    {item.title}
+                    <NavigateNextRoundedIcon
+                      className="arrow"
+                      sx={{ fontSize: '1rem' }}
+                    />
+                  </TitleTypography>
+                ))}
+              </Box>
+            ) : (
+              // Render regular articles
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: 1,
+                  height: '100%',
+                  padding: 0,
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                }}
+              >
+                <Box
+                  component="img"
+                  src={article.image}
+                  alt={article.title}
+                  sx={{
+                    width: '100%',
+                    height: '150px',
+                    objectFit: 'cover',
+                    borderRadius: '8px 8px 0 0',
+                    marginBottom: '8px',
+                  }}
                 />
-              </TitleTypography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {article.description}
-              </StyledTypography>
-              <TechChips tech={article.tech} />
-              <LanguageChips languages={article.languages} />
-            </Box>
+                <Typography gutterBottom variant="caption" component="div">
+                  {article.tag}
+                </Typography>
+                <TitleTypography
+                  gutterBottom
+                  variant="h6"
+                  component="a"
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    '&:hover': {
+                      color: (theme) => theme.palette.primary.main,
+                    },
+                  }}
+                >
+                  {article.title}
+                  <NavigateNextRoundedIcon
+                    className="arrow"
+                    sx={{ fontSize: '1rem' }}
+                  />
+                </TitleTypography>
+                <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                  {article.description}
+                </StyledTypography>
+                <TechChips tech={article.tech} />
+                <LanguageChips languages={article.languages} />
+              </Box>
+            )}
           </Grid>
         ))}
       </Grid>
