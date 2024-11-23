@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@mui/material/Avatar';
-import AvatarGroup from '@mui/material/AvatarGroup';
+import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -10,15 +9,14 @@ import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 
 const articleInfo = [
   {
-    tag: 'Engineering',
-    title: 'The future of AI in software engineering',
+    tag: 'Web-development',
+    title: 'Travel Buddy',
     description:
-      'Artificial intelligence is revolutionizing software engineering. Explore how AI-driven tools are enhancing development processes and improving software quality.',
+      'A full-stack travel web-app, which allows you to search places to visit in the area, create journals, and checklists.',
     image: '/travel-buddy.png',
-    authors: [
-      { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
-      { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
-    ],
+    tech: ['ExpressJS', 'Node.js', 'MongoDB', 'Postman', 'Vue.js'],
+    languages: ['JavaScript', 'HTML', 'CSS'],
+    link: 'https://github.com/jitishp04/Travel-Buddy',
   },
   {
     tag: 'Product',
@@ -26,7 +24,9 @@ const articleInfo = [
     description:
       'Our user-centric product design approach is driving significant growth. Learn about the strategies we employ to create products that resonate with users.',
     image: '/travel-buddy.png',
-    authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
+    tech: ['Figma', 'Adobe XD', 'React'],
+    languages: ['JavaScript', 'TypeScript'],
+    link: 'https://example.com/product-design',
   },
   {
     tag: 'Design',
@@ -34,16 +34,17 @@ const articleInfo = [
     description:
       'Minimalism is a key trend in modern design. Discover how our design team incorporates minimalist principles to create clean and impactful user experiences.',
     image: '/travel-buddy.png',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
+    tech: ['Photoshop', 'Illustrator', 'CSS'],
+    languages: ['CSS', 'SCSS'],
+    link: 'https://example.com/minimal-design',
   },
 ];
 
 const StyledTypography = styled(Typography)({
-  display: '-webkit-box',
-  WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: 2,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  display: 'block',
+  overflow: 'visible',
+  whiteSpace: 'normal',
+  textOverflow: 'clip',
 });
 
 const TitleTypography = styled(Typography)(({ theme }) => ({
@@ -83,53 +84,71 @@ const TitleTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-function Author({ authors }) {
+function TechChips({ tech }) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 2,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
-    >
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}>
-        <AvatarGroup max={3}>
-          {authors.map((author, index) => (
-            <Avatar
-              key={index}
-              alt={author.name}
-              src={author.avatar}
-              sx={{ width: 20, height: 20 }}
-            />
-          ))}
-        </AvatarGroup>
-        <Typography variant="caption">
-          {authors.map((author) => author.name).join(', ')}
-        </Typography>
-      </Box>
-      <Typography variant="caption">July 14, 2021</Typography>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, marginTop: 1 }}>
+      {tech.map((item, index) => (
+        <Chip
+          key={index}
+          label={item}
+          sx={{
+            backgroundColor: (theme) => theme.palette.primary.light,
+            color: (theme) => theme.palette.primary.contrastText,
+          }}
+        />
+      ))}
     </Box>
   );
 }
 
-Author.propTypes = {
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+TechChips.propTypes = {
+  tech: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+function LanguageChips({ languages }) {
+  return (
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, marginTop: 1 }}>
+      {languages.map((item, index) => (
+        <Chip
+          key={index}
+          label={item}
+          sx={{
+            backgroundColor:  (theme) => theme.palette.primary.light,
+            color: (theme) => theme.palette.primary.contrastText,
+            fontWeight: 'bold !important',
+            border: '1px solid #004d40 !important', 
+          }}
+        />
+      ))}
+    </Box>
+  );
+}
+
+LanguageChips.propTypes = {
+  languages: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default function Latest() {
   return (
-    <div>
-      <Typography variant="h2" gutterBottom>
+    <Box
+      sx={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0',
+      }}
+    >
+      <Typography variant="h2" gutterBottom sx={{ textAlign: 'left', paddingLeft: '16px' }}>
         Projects
       </Typography>
-      <Grid container spacing={4} sx={{ my: 4 }}>
+
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          margin: 0,
+          width: 'calc(100% - 18px)',
+        }}
+      >
         {articleInfo.map((article, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
             <Box
@@ -139,10 +158,11 @@ export default function Latest() {
                 justifyContent: 'space-between',
                 gap: 1,
                 height: '100%',
-                padding: 1,
+                padding: 0,
+                borderRadius: '8px',
+                overflow: 'hidden',
               }}
             >
-              {/* Image Above Content */}
               <Box
                 component="img"
                 src={article.image}
@@ -151,14 +171,28 @@ export default function Latest() {
                   width: '100%',
                   height: '150px',
                   objectFit: 'cover',
-                  borderRadius: '8px',
+                  borderRadius: '8px 8px 0 0',
                   marginBottom: '8px',
                 }}
               />
               <Typography gutterBottom variant="caption" component="div">
                 {article.tag}
               </Typography>
-              <TitleTypography gutterBottom variant="h6">
+              <TitleTypography
+                gutterBottom
+                variant="h6"
+                component="a"
+                href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  '&:hover': {
+                    color: (theme) => theme.palette.primary.main,
+                  },
+                }}
+              >
                 {article.title}
                 <NavigateNextRoundedIcon
                   className="arrow"
@@ -168,11 +202,12 @@ export default function Latest() {
               <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                 {article.description}
               </StyledTypography>
-              <Author authors={article.authors} />
+              <TechChips tech={article.tech} />
+              <LanguageChips languages={article.languages} />
             </Box>
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Box>
   );
 }
