@@ -15,6 +15,7 @@ const articleInfo = [
     title: 'The future of AI in software engineering',
     description:
       'Artificial intelligence is revolutionizing software engineering. Explore how AI-driven tools are enhancing development processes and improving software quality.',
+    image: '/travel-buddy.png',
     authors: [
       { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
       { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
@@ -192,7 +193,7 @@ export default function Latest() {
   return (
     <div>
       <Typography variant="h2" gutterBottom>
-        Latest
+        Projects
       </Typography>
       <Grid container spacing={8} columns={12} sx={{ my: 4 }}>
         {articleInfo.map((article, index) => (
