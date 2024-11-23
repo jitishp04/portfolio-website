@@ -19,24 +19,24 @@ const articleInfo = [
     link: 'https://github.com/jitishp04/Travel-Buddy',
   },
   {
-    tag: 'Product',
-    title: 'Driving growth with user-centric product design',
+    tag: 'Arduino and Android - Distributed Systems Development',
+    title: 'Home4U',
     description:
-      'Our user-centric product design approach is driving significant growth. Learn about the strategies we employ to create products that resonate with users.',
-    image: '/travel-buddy.png',
-    tech: ['Figma', 'Adobe XD', 'React'],
-    languages: ['JavaScript', 'TypeScript'],
-    link: 'https://example.com/product-design',
+      'HOME4U is a smart home system that provides users with the experience of monitoring home security from a distance and enjoying smart control of their home through devices. This involves: Set security mode from Wio terminal and app, turn off alarm through app and Wio terminal, interact (play, pause, skip) songs via app and Wio terminal, and create scenes (though unable to execute, open to development).',
+    image: '/WioTerminalSetupImage.jpg',
+    tech: ['Figma', 'Arduino', 'MQTT', 'Node.js', 'Docker', 'Gradle', 'Android Studio'],
+    languages: ['JavaScript', 'Java', 'C++'],
+    link: 'https://github.com/jitishp04/Home4U',
   },
   {
-    tag: 'Design',
-    title: 'Embracing minimalism in modern design',
+    tag: 'Miniature car data extraction - Cyber-physical Systems',
+    title: 'Steering Wheel Algorithm',
     description:
-      'Minimalism is a key trend in modern design. Discover how our design team incorporates minimalist principles to create clean and impactful user experiences.',
-    image: '/travel-buddy.png',
-    tech: ['Photoshop', 'Illustrator', 'CSS'],
-    languages: ['CSS', 'SCSS'],
-    link: 'https://example.com/minimal-design',
+      'Engineering a real-time algorithm for adjusting car steering based on image recognition, sensor data, and angular velocity, integrating OpenDLV for data extraction and processing.',
+    image: '/car.png',
+    tech: ['CMake', 'Docker', 'OpenDLV'],
+    languages: ['C++'],
+    link: 'https://github.com/jitishp04/steering-wheel-algorithm',
   },
 ];
 
