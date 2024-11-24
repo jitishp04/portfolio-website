@@ -24,7 +24,7 @@ const articleInfo = [
     description:
       'HOME4U is a smart home system that provides users with the experience of monitoring home security from a distance and enjoying smart control of their home through devices. This involves: Set security mode from Wio terminal and app, turn off alarm through app and Wio terminal, interact (play, pause, skip) songs via app and Wio terminal, and create scenes (though unable to execute, open to development).',
     image: '/WioTerminalSetupImage.jpg',
-    tech: ['Figma', 'Arduino', 'MQTT', 'Node.js', 'Docker', 'Gradle', 'Android Studio'],
+    tech: ['Figma', 'Arduino', 'MQTT', 'Node.js', 'Docker', 'Gradle', 'Android Studio', 'SQLite'],
     languages: ['JavaScript', 'Java', 'C++'],
     link: 'https://github.com/jitishp04/Home4U',
   },
@@ -92,17 +92,20 @@ const StyledTypography = styled(Typography)({
 const TitleTypography = styled(Typography)(({ theme }) => ({
   position: 'relative',
   textDecoration: 'none',
-  '&:hover': { cursor: 'pointer' },
+  display: 'flex', // Added to enable flex positioning
+  alignItems: 'center', // Center vertically
+  '&:hover': {
+    cursor: 'pointer',
+  },
   '& .arrow': {
     visibility: 'hidden',
-    position: 'absolute',
-    right: 0,
-    top: '50%',
-    transform: 'translateY(-50%)',
+    marginLeft: 'auto', // Push arrow to the right
+    transition: 'visibility 0.2s, opacity 0.2s',
+    opacity: 0,
   },
   '&:hover .arrow': {
     visibility: 'visible',
-    opacity: 0.7,
+    opacity: 1,
   },
   '&:focus-visible': {
     outline: '3px solid',
@@ -117,7 +120,7 @@ const TitleTypography = styled(Typography)(({ theme }) => ({
     height: '1px',
     bottom: 0,
     left: 0,
-    backgroundColor: (theme.vars || theme).palette.text.primary,
+    backgroundColor: theme.palette.text.primary,
     opacity: 0.3,
     transition: 'width 0.3s ease, opacity 0.3s ease',
   },
@@ -155,10 +158,10 @@ function LanguageChips({ languages }) {
           key={index}
           label={item}
           sx={{
-            backgroundColor:  (theme) => theme.palette.primary.light,
+            backgroundColor: (theme) => theme.palette.primary.light,
             color: (theme) => theme.palette.primary.contrastText,
             fontWeight: 'bold !important',
-            border: '1px solid #004d40 !important', 
+            border: '1px solid #004d40 !important',
           }}
         />
       ))}
@@ -193,129 +196,102 @@ export default function Latest() {
       >
         {articleInfo.map((article, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
-            {article.items ? (
-              // Render multiple titles with links
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  gap: 1,
-                  height: '100%',
-                  padding: 0,
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                }}
-              >
-                {article.image ? (
-                  <Box
-                    component="img"
-                    src={article.image}
-                    alt={article.tag}
-                    sx={{
-                      width: '100%',
-                      height: '150px',
-                      objectFit: 'cover',
-                      borderRadius: '8px 8px 0 0',
-                      marginBottom: '8px',
-                    }}
-                  />
-                ) : (
-                  // Optional placeholder
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '150px',
-                      backgroundColor: '#f0f0f0',
-                      borderRadius: '8px 8px 0 0',
-                      marginBottom: '8px',
-                    }}
-                  />
-                )}
-                <Typography gutterBottom variant="caption" component="div">
-                  {article.tag}
-                </Typography>
-                {article.items.map((item, idx) => (
-                  <TitleTypography
-                    key={idx}
-                    variant="h6"
-                    component="a"
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      '&:hover': {
-                        color: (theme) => theme.palette.primary.main,
-                      },
-                    }}
-                  >
-                    {item.title}
-                    <NavigateNextRoundedIcon
-                      className="arrow"
-                      sx={{ fontSize: '1rem' }}
-                    />
-                  </TitleTypography>
-                ))}
-              </Box>
-            ) : (
-              // Render regular articles
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  gap: 1,
-                  height: '100%',
-                  padding: 0,
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                }}
-              >
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                border: '1px solid theme.palette.divider', // Light border
+                borderRadius: '8px',
+                boxShadow: 1, // Slight elevation
+                overflow: 'hidden',
+                height: '100%',
+              }}
+            >
+              {/* Image */}
+              {article.image && (
                 <Box
                   component="img"
                   src={article.image}
-                  alt={article.title}
+                  alt={article.title || article.tag}
                   sx={{
                     width: '100%',
                     height: '150px',
                     objectFit: 'cover',
-                    borderRadius: '8px 8px 0 0',
-                    marginBottom: '8px',
                   }}
                 />
+              )}
+
+              {/* Content */}
+              <Box sx={{ padding: 2, flexGrow: 1 }}>
                 <Typography gutterBottom variant="caption" component="div">
                   {article.tag}
                 </Typography>
-                <TitleTypography
-                  gutterBottom
-                  variant="h6"
-                  component="a"
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    '&:hover': {
-                      color: (theme) => theme.palette.primary.main,
-                    },
-                  }}
-                >
-                  {article.title}
-                  <NavigateNextRoundedIcon
-                    className="arrow"
-                    sx={{ fontSize: '1rem' }}
-                  />
-                </TitleTypography>
-                <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                  {article.description}
-                </StyledTypography>
-                <TechChips tech={article.tech} />
-                <LanguageChips languages={article.languages} />
+
+                {/* Title and Description or Items */}
+                {article.items ? (
+                  // For articles with multiple items
+                  article.items.map((item, idx) => (
+                    <TitleTypography
+                      key={idx}
+                      variant="h6"
+                      component="a"
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        position: 'relative',
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginBottom: 1,
+                        '&:hover': {
+                          color: (theme) => theme.palette.primary.main,
+                        },
+                      }}
+                    >
+                      {item.title}
+                      <NavigateNextRoundedIcon
+                        className="arrow"
+                        sx={{ fontSize: '1rem', marginLeft: 'auto' }}
+                      />
+                    </TitleTypography>
+                  ))
+                ) : (
+                  // For regular articles
+                  <>
+                    <TitleTypography
+                      gutterBottom
+                      variant="h6"
+                      component="a"
+                      href={article.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        display: 'flex',
+                        alignItems: 'center',
+                        '&:hover': {
+                          color: (theme) => theme.palette.primary.main,
+                        },
+                      }}
+                    >
+                      {article.title}
+                      <NavigateNextRoundedIcon
+                        className="arrow"
+                        sx={{ fontSize: '1rem', marginLeft: 'auto' }}
+                      />
+                    </TitleTypography>
+                    <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                      {article.description}
+                    </StyledTypography>
+                    <TechChips tech={article.tech} />
+                    <LanguageChips languages={article.languages} />
+                  </>
+                )}
               </Box>
-            )}
+            </Box>
           </Grid>
         ))}
       </Grid>

@@ -6,6 +6,7 @@ import MainContent from './components/MainContent';
 import Latest from './components/Latest';
 import Footer from './components/Footer';
 import AppTheme from '../shared-theme/AppTheme';
+import TechStack from './components/TechStack';
 
 export default function Blog(props) {
   return (
@@ -19,6 +20,7 @@ export default function Blog(props) {
       >
         <MainContent />
         <Latest />
+        <TechStack/>
       </Container>
       <Footer />
     </AppTheme>
