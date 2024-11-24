@@ -4,6 +4,37 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+// Define a mapping from category tags to specific chip styles
+const chipStyles = {
+  'Programming Languages': {
+    backgroundColor: (theme) => theme.palette.primary.light,
+    color: (theme) => theme.palette.primary.contrastText,
+    fontWeight: 'bold !important',
+    border: '1px solid #004d40 !important',
+  },
+  Frameworks: {
+    backgroundColor: '#FF8A65', // Deep Orange
+    color: '#fff',
+  },
+  Libraries: {
+    backgroundColor: '#4DB6AC', // Teal
+    color: '#fff',
+  },
+  Databases: {
+    backgroundColor: '#BA68C8', // Purple
+    color: '#fff',
+  },
+  'Tools & Platforms': {
+    backgroundColor: '#9575CD', // Deep Purple
+    color: '#fff',
+  },
+  DevOps: {
+    backgroundColor: '#81C784', // Green
+    color: '#fff',
+  },
+  // Add more categories and styles as needed
+};
+
 const techStackInfo = [
   {
     tag: 'Programming Languages',
@@ -19,7 +50,7 @@ const techStackInfo = [
   },
   {
     tag: 'Databases',
-    items: ['MongoDB', 'MySQL', 'PostgreSQL'],
+    items: ['MongoDB', 'SQLite', 'PostgreSQL'],
   },
   {
     tag: 'Tools & Platforms',
@@ -79,8 +110,10 @@ export default function TechStack() {
                     key={idx}
                     label={item}
                     sx={{
-                      backgroundColor: (theme) => theme.palette.primary.light,
-                      color: (theme) => theme.palette.primary.contrastText,
+                      ...(chipStyles[category.tag] || {
+                        backgroundColor: (theme) => theme.palette.primary.light,
+                        color: (theme) => theme.palette.primary.contrastText,
+                      }),
                     }}
                   />
                 ))}

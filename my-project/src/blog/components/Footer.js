@@ -3,24 +3,9 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import FacebookIcon from '@mui/icons-material/GitHub';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-      {'Copyright © '}
-      <Link color="text.secondary" href="https://mui.com/">
-        Sitemark
-      </Link>
-      &nbsp;
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
 
 export default function Footer() {
   return (
@@ -41,32 +26,31 @@ export default function Footer() {
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
             width: '100%',
-            justifyContent: 'space-between',
+            justifyContent: 'center', // Center the icons if no other content
           }}
         >
-          <div>
-
-            <Copyright />
-          </div>
           <Stack
             direction="row"
             spacing={1}
-            useFlexGap
-            sx={{ justifyContent: 'left', color: 'text.secondary' }}
+            sx={{ color: 'text.secondary' }}
           >
             <IconButton
               color="inherit"
               size="small"
-              href="https://github.com/jitishp04" target="_blank" rel="noopener noreferrer"
+              href="https://github.com/jitishp04"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="GitHub"
               sx={{ alignSelf: 'center' }}
             >
-              <FacebookIcon />
+              <GitHubIcon />
             </IconButton>
             <IconButton
               color="inherit"
               size="small"
-              href="https://www.linkedin.com/in/jitish-rajankumar-padhya/" target="_blank" rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/jitish-rajankumar-padhya/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               sx={{ alignSelf: 'center' }}
             >
