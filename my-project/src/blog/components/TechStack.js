@@ -10,7 +10,6 @@ const chipStyles = {
     backgroundColor: (theme) => theme.palette.primary.light,
     color: (theme) => theme.palette.primary.contrastText,
     fontWeight: 'bold !important',
-    border: '1px solid #004d40 !important',
   },
   Frameworks: {
     backgroundColor: '#FF8A65', // Deep Orange
@@ -24,7 +23,7 @@ const chipStyles = {
     backgroundColor: '#BA68C8', // Purple
     color: '#fff',
   },
-  'Tools & Platforms': {
+  Platforms: {
     backgroundColor: '#9575CD', // Deep Purple
     color: '#fff',
   },
@@ -32,7 +31,14 @@ const chipStyles = {
     backgroundColor: '#81C784', // Green
     color: '#fff',
   },
-  // Add more categories and styles as needed
+  'Testing Tools': {
+    backgroundColor: '#FFB74D', // Amber
+    color: '#fff',
+  },
+  'Building Tools': {
+    backgroundColor: '#64B5F6', // Light Blue
+    color: '#fff',
+  },
 };
 
 const techStackInfo = [
@@ -42,23 +48,31 @@ const techStackInfo = [
   },
   {
     tag: 'Frameworks',
-    items: ['React', 'Vue.js', 'Node.js', 'ExpressJS', 'Django'],
+    items: ['React', 'Vue.js', 'ExpressJS', 'Django', 'OpenDLV'],
   },
   {
     tag: 'Libraries',
-    items: ['React', 'Vue.js', 'Node.js', 'Express', 'Spring Boot', 'Flask'],
+    items: ['Scikit-learn', 'Pandas', 'Numpy', 'Matplotlib', 'Nltk'],
   },
   {
     tag: 'Databases',
     items: ['MongoDB', 'SQLite', 'PostgreSQL'],
   },
   {
-    tag: 'Tools & Platforms',
-    items: ['Git', 'Docker', 'AWS', 'Heroku', 'Jenkins', 'Postman'],
+    tag: 'Platforms',
+    items: ['Gitlab/ Github', 'Ubuntu', 'Android Studio', 'VS Code', 'IntelliJ'],
+  },
+  {
+    tag: 'Testing Tools',
+    items: ['JUnit', 'Postman', 'MQTTX', 'Apache JMeter', 'Mockito'],
+  },
+  {
+    tag: 'Building Tools ',
+    items: ['Maven', 'Gradle', 'Vite', 'Make', 'CMake'],
   },
   {
     tag: 'DevOps',
-    items: ['Docker', 'Kubernetes'],
+    items: ['Docker', 'Kubernetes', 'GitLab CI/CD'],
   },
   // Add more categories and items as needed
 ];
