@@ -1,2 +1,2 @@
 # portfolio-website
-(not yet completed)
+v1.0: https://jitish-portfolio.vercel.app/
