@@ -37,6 +37,9 @@ export default function AppAppBar() {
     setOpen(newOpen);
   };
 
+  // Define the offset for the scroll position adjustment
+  const appBarOffset = -80; // Adjust based on your AppBar height
+
   return (
     <AppBar
       position="fixed"
@@ -61,6 +64,7 @@ export default function AppAppBar() {
                 to="projects"
                 smooth={true}
                 duration={500}
+                offset={appBarOffset} // Adjust scroll position to account for AppBar height
               >
                 Projects
               </Button>
@@ -72,6 +76,7 @@ export default function AppAppBar() {
                 to="about-me"
                 smooth={true}
                 duration={500}
+                offset={appBarOffset}
               >
                 About Me
               </Button>
@@ -83,6 +88,7 @@ export default function AppAppBar() {
                 to="tech-stack"
                 smooth={true}
                 duration={500}
+                offset={appBarOffset}
               >
                 Tech Stack
               </Button>
@@ -124,13 +130,31 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
                 {/* Drawer Links */}
-                <MenuItem component={Link} to="projects" smooth={true} duration={500}>
+                <MenuItem
+                  component={Link}
+                  to="projects"
+                  smooth={true}
+                  duration={500}
+                  offset={appBarOffset}
+                >
                   Projects
                 </MenuItem>
-                <MenuItem component={Link} to="about-me" smooth={true} duration={500}>
+                <MenuItem
+                  component={Link}
+                  to="about-me"
+                  smooth={true}
+                  duration={500}
+                  offset={appBarOffset}
+                >
                   About Me
                 </MenuItem>
-                <MenuItem component={Link} to="tech-stack" smooth={true} duration={500}>
+                <MenuItem
+                  component={Link}
+                  to="tech-stack"
+                  smooth={true}
+                  duration={500}
+                  offset={appBarOffset}
+                >
                   Tech Stack
                 </MenuItem>
                 <Divider sx={{ my: 3 }} />
