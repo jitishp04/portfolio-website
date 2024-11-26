@@ -37,7 +37,7 @@ const chipStyles = {
     color: '#fff',
   },
   'Building Tools': {
-    backgroundColor: '#64B5F6', // Light Blue
+    backgroundColor: '#FF7043', // Burnt Orange
     color: '#fff',
   },
 };
@@ -68,7 +68,7 @@ const techStackInfo = [
     items: ['JUnit', 'Postman', 'MQTTX', 'Apache JMeter', 'Mockito'],
   },
   {
-    tag: 'Building Tools ',
+    tag: 'Building Tools',
     items: ['Maven', 'Gradle', 'Vite', 'Make', 'CMake'],
   },
   {
