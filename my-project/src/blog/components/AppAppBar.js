@@ -12,6 +12,7 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
+import { Link } from 'react-scroll'; // Import Link from react-scroll
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -51,13 +52,38 @@ export default function AppAppBar() {
         <StyledToolbar variant="dense" disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
+              {/* Add Link components */}
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                component={Link}
+                to="projects"
+                smooth={true}
+                duration={500}
+              >
                 Projects
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                component={Link}
+                to="about-me"
+                smooth={true}
+                duration={500}
+              >
                 About Me
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                component={Link}
+                to="tech-stack"
+                smooth={true}
+                duration={500}
+              >
                 Tech Stack
               </Button>
             </Box>
@@ -97,9 +123,16 @@ export default function AppAppBar() {
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
-                <MenuItem>Projects</MenuItem>
-                <MenuItem>About Me</MenuItem>
-                <MenuItem>Tech Stack</MenuItem>
+                {/* Drawer Links */}
+                <MenuItem component={Link} to="projects" smooth={true} duration={500}>
+                  Projects
+                </MenuItem>
+                <MenuItem component={Link} to="about-me" smooth={true} duration={500}>
+                  About Me
+                </MenuItem>
+                <MenuItem component={Link} to="tech-stack" smooth={true} duration={500}>
+                  Tech Stack
+                </MenuItem>
                 <Divider sx={{ my: 3 }} />
               </Box>
             </Drawer>

@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+import { Element } from 'react-scroll'; // Import Element for scrolling
+
 
 const articleInfo = [
   {
@@ -175,126 +177,128 @@ LanguageChips.propTypes = {
 
 export default function Latest() {
   return (
-    <Box
-      sx={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0',
-      }}
-    >
-      <Typography variant="h2" gutterBottom sx={{ textAlign: 'left', paddingLeft: '16px' }}>
-        Projects
-      </Typography>
-
-      <Grid
-        container
-        spacing={3}
+    <Element id="projects" name="projects"> {/* Wrap with Element */}
+      <Box
         sx={{
-          margin: 0,
-          width: 'calc(100% - 18px)',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0',
         }}
       >
-        {articleInfo.map((article, index) => (
-          <Grid key={index} item xs={12} sm={6} md={4}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                border: '1px solid theme.palette.divider', // Light border
-                borderRadius: '8px',
-                boxShadow: 1, // Slight elevation
-                overflow: 'hidden',
-                height: '100%',
-              }}
-            >
-              {/* Image */}
-              {article.image && (
-                <Box
-                  component="img"
-                  src={article.image}
-                  alt={article.title || article.tag}
-                  sx={{
-                    width: '100%',
-                    height: '150px',
-                    objectFit: 'cover',
-                  }}
-                />
-              )}
+        <Typography variant="h2" gutterBottom sx={{ textAlign: 'left', paddingLeft: '16px' }}>
+          Projects
+        </Typography>
 
-              {/* Content */}
-              <Box sx={{ padding: 2, flexGrow: 1 }}>
-                <Typography gutterBottom variant="caption" component="div">
-                  {article.tag}
-                </Typography>
-
-                {/* Title and Description or Items */}
-                {article.items ? (
-                  // For articles with multiple items
-                  article.items.map((item, idx) => (
-                    <TitleTypography
-                      key={idx}
-                      variant="h6"
-                      component="a"
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        position: 'relative',
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginBottom: 1,
-                        '&:hover': {
-                          color: (theme) => theme.palette.primary.main,
-                        },
-                      }}
-                    >
-                      {item.title}
-                      <NavigateNextRoundedIcon
-                        className="arrow"
-                        sx={{ fontSize: '1rem', marginLeft: 'auto' }}
-                      />
-                    </TitleTypography>
-                  ))
-                ) : (
-                  // For regular articles
-                  <>
-                    <TitleTypography
-                      gutterBottom
-                      variant="h6"
-                      component="a"
-                      href={article.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        display: 'flex',
-                        alignItems: 'center',
-                        '&:hover': {
-                          color: (theme) => theme.palette.primary.main,
-                        },
-                      }}
-                    >
-                      {article.title}
-                      <NavigateNextRoundedIcon
-                        className="arrow"
-                        sx={{ fontSize: '1rem', marginLeft: 'auto' }}
-                      />
-                    </TitleTypography>
-                    <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                      {article.description}
-                    </StyledTypography>
-                    <TechChips tech={article.tech} />
-                    <LanguageChips languages={article.languages} />
-                  </>
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            margin: 0,
+            width: 'calc(100% - 18px)',
+          }}
+        >
+          {articleInfo.map((article, index) => (
+            <Grid key={index} item xs={12} sm={6} md={4}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  border: '1px solid theme.palette.divider', // Light border
+                  borderRadius: '8px',
+                  boxShadow: 1, // Slight elevation
+                  overflow: 'hidden',
+                  height: '100%',
+                }}
+              >
+                {/* Image */}
+                {article.image && (
+                  <Box
+                    component="img"
+                    src={article.image}
+                    alt={article.title || article.tag}
+                    sx={{
+                      width: '100%',
+                      height: '150px',
+                      objectFit: 'cover',
+                    }}
+                  />
                 )}
+
+                {/* Content */}
+                <Box sx={{ padding: 2, flexGrow: 1 }}>
+                  <Typography gutterBottom variant="caption" component="div">
+                    {article.tag}
+                  </Typography>
+
+                  {/* Title and Description or Items */}
+                  {article.items ? (
+                    // For articles with multiple items
+                    article.items.map((item, idx) => (
+                      <TitleTypography
+                        key={idx}
+                        variant="h6"
+                        component="a"
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{
+                          textDecoration: 'none',
+                          color: 'inherit',
+                          position: 'relative',
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginBottom: 1,
+                          '&:hover': {
+                            color: (theme) => theme.palette.primary.main,
+                          },
+                        }}
+                      >
+                        {item.title}
+                        <NavigateNextRoundedIcon
+                          className="arrow"
+                          sx={{ fontSize: '1rem', marginLeft: 'auto' }}
+                        />
+                      </TitleTypography>
+                    ))
+                  ) : (
+                    // For regular articles
+                    <>
+                      <TitleTypography
+                        gutterBottom
+                        variant="h6"
+                        component="a"
+                        href={article.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{
+                          textDecoration: 'none',
+                          color: 'inherit',
+                          display: 'flex',
+                          alignItems: 'center',
+                          '&:hover': {
+                            color: (theme) => theme.palette.primary.main,
+                          },
+                        }}
+                      >
+                        {article.title}
+                        <NavigateNextRoundedIcon
+                          className="arrow"
+                          sx={{ fontSize: '1rem', marginLeft: 'auto' }}
+                        />
+                      </TitleTypography>
+                      <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                        {article.description}
+                      </StyledTypography>
+                      <TechChips tech={article.tech} />
+                      <LanguageChips languages={article.languages} />
+                    </>
+                  )}
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Element>
   );
 }
