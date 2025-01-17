@@ -15,7 +15,7 @@ const articleInfo = [
     title: 'CyberSafeAI',
     description:
       'CyberSafeAI is a web application designed to combat the rising cyber crime linked to social media use by identifying and flagging toxic text. Users can upload messages, tweets, or other text for toxicity analysis, with the system categorizing and assigning percentages to labels such as toxic, severe_toxic, obscene, threat, insult, and identity_hate. By highlighting problematic content, CyberSafeAI provides explainable AI solutions, helping individuals, content creators, and social media managers analyze and refine their text before posting, ultimately fostering a safer and healthier online environment.',
-    image: '/cyberSafeAI.png',
+    image: '/cyberSafeAi.png',
     tech: ['Django', 'Pytest', 'BERT LLM', 'SQLite', 'Docker', 'Kubernetes', 'GCP', 'Gitlab CI/CD'], 
     languages: ['Python', 'HTML', 'CSS', 'JavaScript'],
     link: 'https://github.com/jitishp04/CyberSafeAI',
