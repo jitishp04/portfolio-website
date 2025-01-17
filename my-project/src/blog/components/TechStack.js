@@ -48,12 +48,12 @@ const techStackInfo = [
     items: ['JavaScript', 'Python', 'Java', 'C++', 'C', 'HTML', 'CSS'],
   },
   {
-    tag: 'Frameworks',
-    items: ['React', 'Vue.js', 'ExpressJS', 'Django', 'OpenDLV'],
+    tag: 'Web Technologies',
+    items: ['React', 'Vue.js', 'Django', 'FastAPI', 'Node.js', 'WebSocket', 'Bootstrap', 'Tailwind CSS', 'DailyUI', 'Material-UI (MUI)'],
   },
   {
-    tag: 'Libraries',
-    items: ['Scikit-learn', 'Pandas', 'Numpy', 'Matplotlib', 'Nltk'],
+    tag: 'AI/ML Technologies',
+    items: ['NumPy', 'Matplotlib', 'SciPy', 'Pandas', 'Scikit-learn', 'Hugging Face', 'PyTorch'],
   },
   {
     tag: 'Databases',
@@ -61,11 +61,11 @@ const techStackInfo = [
   },
   {
     tag: 'Platforms',
-    items: ['Gitlab/ Github', 'Ubuntu', 'Android Studio', 'VS Code', 'IntelliJ'],
+    items: ['Gitlab/ Github', 'Ubuntu', 'Android Studio', 'VS Code', 'IntelliJ', 'OpenDLV'],
   },
   {
     tag: 'Testing Tools',
-    items: ['JUnit', 'Postman', 'MQTTX', 'Apache JMeter', 'Mockito'],
+    items: ['JUnit', 'PyTest', 'Postman', 'MQTTX', 'Apache JMeter', 'Mockito'],
   },
   {
     tag: 'Building Tools',
@@ -73,7 +73,7 @@ const techStackInfo = [
   },
   {
     tag: 'DevOps',
-    items: ['Docker', 'Kubernetes', 'GitLab CI/CD'],
+    items: ['Docker', 'Kubernetes', 'Google Cloud Platform (GCP)', 'GitLab CI/CD'],
   },
   // Add more categories and items as needed
 ];

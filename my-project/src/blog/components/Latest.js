@@ -11,6 +11,26 @@ import { Element } from 'react-scroll'; // Import Element for scrolling
 
 const articleInfo = [
   {
+    tag: 'AI and Machine Learning Systems Development',
+    title: 'CyberSafeAI',
+    description:
+      'CyberSafeAI is a web application designed to combat the rising cyber crime linked to social media use by identifying and flagging toxic text. Users can upload messages, tweets, or other text for toxicity analysis, with the system categorizing and assigning percentages to labels such as toxic, severe_toxic, obscene, threat, insult, and identity_hate. By highlighting problematic content, CyberSafeAI provides explainable AI solutions, helping individuals, content creators, and social media managers analyze and refine their text before posting, ultimately fostering a safer and healthier online environment.',
+    image: '/cyberSafeAI.png',
+    tech: ['Django', 'Pytest', 'BERT LLM', 'SQLite', 'Docker', 'Kubernetes', 'GCP', 'Gitlab CI/CD'], 
+    languages: ['Python', 'HTML', 'CSS', 'JavaScript'],
+    link: 'https://github.com/jitishp04/CyberSafeAI',
+  },
+  {
+    tag: 'Microservices Based Distributed Systems Development',
+    title: 'Dentigo',
+    description:
+      'This project focuses on creating a distributed system to simplify the process of booking dentist appointments in Gothenburg, with plans to expand across Sweden. The system provides a web-based graphical user interface (GUI) that allows users to search for available appointment slots within specified time windows, view them on an interactive map, and book or cancel appointments. Users are notified about booking updates in real time, ensuring a seamless experience.',
+    image: '/dentigo1.png',
+    tech: ['Vue', 'MQTT', 'Node.js', 'Docker', 'PostgreSQL', 'Gitlab CI/CD', 'Tailwind CSS', 'DaisyUI'],
+    languages: ['TypeScript', 'JavaScript', 'HTML', 'CSS'],
+    link: 'https://github.com/jitishp04/DENTIGO',
+  },
+  {
     tag: 'Web-development',
     title: 'Travel Buddy',
     description:
