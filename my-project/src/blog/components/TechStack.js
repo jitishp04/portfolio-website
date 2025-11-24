@@ -45,7 +45,7 @@ const chipStyles = {
 const techStackInfo = [
   {
     tag: 'Programming Languages',
-    items: ['JavaScript', 'Python', 'Java', 'C++', 'C', 'HTML', 'CSS'],
+    items: ['JavaScript', 'Python', 'Java', 'C++', 'C', 'HTML', 'CSS', 'R', 'TypeScript'],
   },
   {
     tag: 'Web Technologies',
@@ -57,11 +57,11 @@ const techStackInfo = [
   },
   {
     tag: 'Databases',
-    items: ['MongoDB', 'SQLite', 'PostgreSQL'],
+    items: ['MongoDB', 'SQLite', 'PostgreSQL', 'MySQL'],
   },
   {
     tag: 'Platforms',
-    items: ['Gitlab/ Github', 'Ubuntu', 'Android Studio', 'VS Code', 'IntelliJ', 'OpenDLV'],
+    items: ['Gitlab/ Github', 'Ubuntu', 'Android Studio', 'VS Code', 'IntelliJ', 'OpenDLV', 'Arduino', 'RStudio', 'Cursor', 'Google Antigravity'],
   },
   {
     tag: 'Testing Tools',
@@ -79,66 +79,66 @@ const techStackInfo = [
 ];
 
 export default function TechStack() {
-    return (
-      <Element id="tech-stack" name="tech-stack"> {/* Wrap with Element */}
-        <Box
+  return (
+    <Element id="tech-stack" name="tech-stack"> {/* Wrap with Element */}
+      <Box
+        sx={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0',
+        }}
+      >
+        <Typography variant="h2" gutterBottom sx={{ textAlign: 'left', paddingLeft: '16px' }}>
+          Tech Stack
+        </Typography>
+
+        <Grid
+          container
+          spacing={3}
           sx={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '0',
+            margin: 0,
+            width: 'calc(100% - 18px)',
           }}
         >
-          <Typography variant="h2" gutterBottom sx={{ textAlign: 'left', paddingLeft: '16px' }}>
-            Tech Stack
-          </Typography>
-  
-          <Grid
-            container
-            spacing={3}
-            sx={{
-              margin: 0,
-              width: 'calc(100% - 18px)',
-            }}
-          >
-            {techStackInfo.map((category, index) => (
-              <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    border: (theme) => `1px solid ${theme.palette.divider}`, // Light border
-                    borderRadius: '8px',
-                    boxShadow: 1, // Slight elevation
-                    overflow: 'hidden',
-                    height: '100%',
-                    padding: 2, // Add padding inside the box
-                  }}
-                >
-                  {/* Category Title */}
-                  <Typography gutterBottom variant="h6" component="div">
-                    {category.tag}
-                  </Typography>
-  
-                  {/* Tech Items */}
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                    {category.items.map((item, idx) => (
-                      <Chip
-                        key={idx}
-                        label={item}
-                        sx={{
-                          ...(chipStyles[category.tag] || {
-                            backgroundColor: (theme) => theme.palette.primary.light,
-                            color: (theme) => theme.palette.primary.contrastText,
-                          }),
-                        }}
-                      />
-                    ))}
-                  </Box>
+          {techStackInfo.map((category, index) => (
+            <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  border: (theme) => `1px solid ${theme.palette.divider}`, // Light border
+                  borderRadius: '8px',
+                  boxShadow: 1, // Slight elevation
+                  overflow: 'hidden',
+                  height: '100%',
+                  padding: 2, // Add padding inside the box
+                }}
+              >
+                {/* Category Title */}
+                <Typography gutterBottom variant="h6" component="div">
+                  {category.tag}
+                </Typography>
+
+                {/* Tech Items */}
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {category.items.map((item, idx) => (
+                    <Chip
+                      key={idx}
+                      label={item}
+                      sx={{
+                        ...(chipStyles[category.tag] || {
+                          backgroundColor: (theme) => theme.palette.primary.light,
+                          color: (theme) => theme.palette.primary.contrastText,
+                        }),
+                      }}
+                    />
+                  ))}
                 </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Element>
-    );
-  }
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Element>
+  );
+}

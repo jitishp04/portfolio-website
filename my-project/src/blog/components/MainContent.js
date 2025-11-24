@@ -81,10 +81,10 @@ export default function MainContent() {
             </Typography>
             <Typography variant="body1" color="text.primary">
               <Typography paragraph>
-                I'm a passionate software engineering student in Gothenburg, Sweden. I enjoy utilizing my skills to create impactful solutions in web/app development, embedded systems, distributed systems, and AI-driven applications. I love the intersection of AI and software engineering, particularly how machine learning can enhance user experience, optimize development processes, and drive innovation. Currently, I'm focusing on integrating AI technologies into real-world projects to make everyday life more efficient and insightful.
+                Currently pursuing a Master’s in Data Science, Statistics, and Decision Analysis at Stockholm University, with a focus on statistical modeling, machine learning, and decision analysis. This academic journey builds on a Bachelor’s degree in Software Engineering and Management from the University of Gothenburg, where a strong foundation in software architectures, project management and risk analysis, web development, and data management was developed.
               </Typography>
               <Typography paragraph>
-                Outside of coding, I'm a strong advocate for teamwork and leadership, with experience in project management through initiatives like the Amnesty International Club and management courses within the university. I'm excited about solving complex challenges and pushing the boundaries of what's possible, both in technology and beyond.
+                Recently contributed to advancing AI-driven solutions in requirements engineering during internships at Ericsson and developed Agentic AI for medical data extraction at BosLeo. Proficient in R, SQL, and requirements engineering, with certifications in Python for Data Science and Palantir’s Foundry & AIP Builder. Enthusiastic about leveraging technical expertise to drive impactful, innovative solutions at the intersection of software engineering and data science.
               </Typography>
             </Typography>
             <Box sx={{ my: 2 }}>
