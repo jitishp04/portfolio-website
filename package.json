@@ -5,6 +5,6 @@
     "build": "cd my-project && npm install && npm run build"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   }
 }
